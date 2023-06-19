@@ -2,11 +2,22 @@ import "./App.scss";
 import React from "react";
 import { Canvas } from "react-three-fiber";
 import BlueprintMesh from "./Components/BlueprintMesh";
+import { SoftShadows } from "@react-three/drei";
+
+
+
 
 function App() {
   return (
     <>
       <Canvas legacy={true} camera={{ position: [-5, 2, 10], fov: 60 }} shadows>
+      <SoftShadows
+          opacity={0.2}
+          width={1024}
+          height={1024}
+          blur={2}
+          bias={-0.0001}
+        />
         <ambientLight intensity={0.3} />
         <directionalLight
           castShadow
