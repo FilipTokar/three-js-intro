@@ -7,6 +7,12 @@ import { SoftShadows, OrbitControls } from "@react-three/drei";
 function App() {
   return (
     <>
+    <div className="header">
+      <h1>Hello.</h1>
+      <p>Click, hover and move the shapes around!</p>
+    </div>
+    
+
       <Canvas legacy={true} camera={{ position: [-5, 2, 10], fov: 60 }} shadows>
         <SoftShadows
           opacity={0.2}

@@ -1,5 +1,7 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding:0;
 }
 
 html, body, #root {
@@ -12,4 +14,20 @@ html, body, #root {
 body {
   background-color: #f1f4fB;
   position: fixed;
+}
+
+h1 {
+  font-size: 90px;
+}
+
+p {
+  font-size: 32px;
+}
+
+.header {
+  text-align: center;
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
 }
