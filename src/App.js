@@ -2,16 +2,13 @@ import "./App.scss";
 import React from "react";
 import { Canvas } from "react-three-fiber";
 import BlueprintMesh from "./Components/BlueprintMesh";
-import { SoftShadows } from "@react-three/drei";
-
-
-
+import { SoftShadows, OrbitControls } from "@react-three/drei";
 
 function App() {
   return (
     <>
       <Canvas legacy={true} camera={{ position: [-5, 2, 10], fov: 60 }} shadows>
-      <SoftShadows
+        <SoftShadows
           opacity={0.2}
           width={1024}
           height={1024}
@@ -41,12 +38,18 @@ function App() {
           >
             <planeGeometry attach="geometry" args={[100, 100]} />
             <shadowMaterial attach="material" opacity={0.3} />
-            
           </mesh>
+          <BlueprintMesh
+            position={[0, 1, 0]}
+            args={[3, 2, 1]}
+            color="blue"
+            speed={2}
+          />
+          <BlueprintMesh position={[-2, 1, -5]} color="red" speed={5} />
+          <BlueprintMesh position={[5, 1, -2]} color="hotpink" speed={5} />
         </group>
-        <BlueprintMesh position={[0, 1, 0]} args={[3, 2, 1]} color="blue" />
-        <BlueprintMesh position={[-2, 1, -5]} color="red" />
-        <BlueprintMesh position={[5, 1, -2]} color="hotpink" />
+
+        <OrbitControls />
       </Canvas>
     </>
   );

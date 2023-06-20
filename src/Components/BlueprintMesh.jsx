@@ -1,15 +1,33 @@
-import React, { useRef } from 'react'
-import { useFrame } from 'react-three-fiber'
+import React, { useRef, useState } from "react";
+import { useFrame } from "react-three-fiber";
+import { MeshWobbleMaterial } from "@react-three/drei";
 
-function BluepringMesh({position, args, color}) {
-    const mesh = useRef(null)
-    useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.005))
+function BlueprintMesh({ position, args, color, speed }) {
+  const mesh = useRef(null);
+  useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.005));
+
+  const [expand, setExpand] = useState(false);
+  const [hover, sethover] = useState(false);
+
   return (
-    <mesh position={position} ref={mesh} castShadow>
-        <boxGeometry attach="geometry" args={args}/>
-        <meshStandardMaterial attach="material" color={color}/>
+    <mesh
+      onClick={() => setExpand(!expand)}
+      onPointerOver={() => sethover(true)}
+      onPointerOut={() => sethover(false)}
+      position={position}
+      scale={expand ? 1.4 : 1}
+      ref={mesh}
+      castShadow
+    >
+      <boxGeometry attach="geometry" args={args} />
+      <MeshWobbleMaterial
+        attach="material"
+        color={hover ? "purple" : color}
+        speed={speed}
+        factor={0.5}
+      />
     </mesh>
-  )
+  );
 }
 
-export default BluepringMesh
+export default BlueprintMesh;
